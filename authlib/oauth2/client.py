@@ -150,7 +150,7 @@ class OAuth2Client(object):
 
         uri = prepare_grant_uri(
             url, client_id=self.client_id, response_type=response_type,
-            state=state, **kwargs)
+            state, **kwargs)
         return uri, state
 
     def fetch_token(self, url=None, body='', method='POST', headers=None,

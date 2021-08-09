@@ -230,9 +230,6 @@ class OAuth2Base(object):
 
     @staticmethod
     def _format_state_params(state_data, params):
-        if state_data is None:
-            raise MismatchingStateError()
-
         code_verifier = state_data.get('code_verifier')
         if code_verifier:
             params['code_verifier'] = code_verifier

@@ -36,7 +36,7 @@ class FrameworkIntegration(object):
         if self.cache:
             value = self._get_cache_data(key)
         else:
-            log.debug('2== ')
+            log.debug(f'2=={key}')
             value = session.get(key)
         if value:
             return value.get('data')

@@ -230,6 +230,8 @@ class OAuth2Base(object):
 
     @staticmethod
     def _format_state_params(state_data, params):
+        log.debug('1-- ' + state_data)
+        log.debug('2-- ' + params)
         if state_data is None:
             raise MismatchingStateError()
 

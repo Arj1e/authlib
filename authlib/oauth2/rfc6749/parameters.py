@@ -150,8 +150,7 @@ def parse_authorization_code_response(uri, state=None):
 
     if 'code' not in params:
         raise MissingCodeException()
-    log.debug('3-- ' + state)
-    log.debug('4-- ' + params.get('state', None))
+
     if state and params.get('state', None) != state:
         raise MismatchingStateException()
 
@@ -207,8 +206,7 @@ def parse_implicit_response(uri, state=None):
 
     if 'token_type' not in params:
         raise MissingTokenTypeException()
-    log.debug('1-- ' + state)
-    log.debug('2-- ' + params.get('state', None))
+
     if state and params.get('state', None) != state:
         raise MismatchingStateException()
 

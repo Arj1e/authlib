@@ -9,6 +9,7 @@ from .rfc6749.parameters import (
 from .rfc7009 import prepare_revoke_token_request
 from .rfc7636 import create_s256_code_challenge
 from .auth import TokenAuth, ClientAuth
+from pprint import pprint
 
 DEFAULT_HEADERS = {
     'Accept': 'application/json',
@@ -341,7 +342,11 @@ class OAuth2Client(object):
             else:
                 url = '?'.join([url, body])
             body = ''
-
+        pprint(url)
+        pprint(body)
+        pprint(headers)
+        pprint(auth)
+        pprint(**kwargs)
         resp = self.session.request(
             method, url, data=body, headers=headers, auth=auth, **kwargs)
 

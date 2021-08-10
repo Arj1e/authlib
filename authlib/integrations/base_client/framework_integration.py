@@ -38,7 +38,7 @@ class FrameworkIntegration(object):
         else:
             log.debug('2== ')
             value = session.get(key)
-            log.debug('2-- ' + value)
+            log.debug('2-- ' + value.get('redirect_uri'))
         if value:
             return value.get('data')
         log.debug('4== ')

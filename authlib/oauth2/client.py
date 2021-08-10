@@ -346,7 +346,7 @@ class OAuth2Client(object):
         pprint(body)
         pprint(headers)
         pprint(auth)
-        pprint(**kwargs)
+        pprint(kwargs['redirect_uri'])
         resp = self.session.request(
             method, url, data=body, headers=headers, auth=auth, **kwargs)
 

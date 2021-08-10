@@ -206,7 +206,8 @@ def parse_implicit_response(uri, state=None):
 
     if 'token_type' not in params:
         raise MissingTokenTypeException()
-
+    print('1-- ' + state)
+    print('2-- ' + params.get('state', None))
     if state and params.get('state', None) != state:
         raise MismatchingStateException()
 

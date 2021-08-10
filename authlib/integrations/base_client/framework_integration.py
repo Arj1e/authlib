@@ -1,7 +1,8 @@
 import json
 import time
 
-
+import logging
+log = logging.getLogger(__name__)
 class FrameworkIntegration(object):
     expires_in = 3600
 
@@ -33,11 +34,15 @@ class FrameworkIntegration(object):
     def get_state_data(self, session, state):
         key = f'_state_{self.name}_{state}'
         if self.cache:
+            log.debug('1== ')
             value = self._get_cache_data(key)
         else:
+            log.debug('2== ')
             value = session.get(key)
         if value:
+            log.debug('3== ')
             return value.get('data')
+        log.debug('4== ')
         return None
 
     def set_state_data(self, session, state, data):

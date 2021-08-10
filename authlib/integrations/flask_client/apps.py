@@ -6,7 +6,8 @@ from ..base_client import (
     OAuth1Mixin, OAuth2Mixin, OpenIDMixin,
 )
 
-
+import logging
+log = logging.getLogger(__name__)
 class FlaskAppMixin(object):
     @property
     def token(self):

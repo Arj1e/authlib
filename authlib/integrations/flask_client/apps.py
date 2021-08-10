@@ -96,7 +96,8 @@ class FlaskOAuth2App(FlaskAppMixin, OAuth2Mixin, OpenIDMixin, BaseApp):
                 'code': request.form['code'],
                 'state': request.form.get('state'),
             }
-
+        log.debug('1-- ' + session)
+        log.debug('2-- ' + params)
         state_data = self.framework.get_state_data(session, params.get('state'))
         params = self._format_state_params(state_data, params)
         token = self.fetch_access_token(**params, **kwargs)

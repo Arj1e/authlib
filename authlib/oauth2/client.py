@@ -10,6 +10,7 @@ from .rfc7009 import prepare_revoke_token_request
 from .rfc7636 import create_s256_code_challenge
 from .auth import TokenAuth, ClientAuth
 from pprint import pprint
+import logging
 log = logging.getLogger(__name__)
 
 DEFAULT_HEADERS = {

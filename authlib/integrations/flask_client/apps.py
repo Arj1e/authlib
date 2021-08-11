@@ -105,7 +105,7 @@ class FlaskOAuth2App(FlaskAppMixin, OAuth2Mixin, OpenIDMixin, BaseApp):
         params = self._format_state_params(state_data, params)
         log.debug('TEST2')
         # pprint(params)
-        token = self.fetch_access_token(params, **kwargs)
+        token = self.fetch_access_token(redirect_uri='http%3A%2F%2F35.171.194.94%3A8088%2Foauth-authorized%2Fopenlmis', **kwargs)
         log.debug('TEST3')
         self.token = token
 

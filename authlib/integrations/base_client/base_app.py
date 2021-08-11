@@ -122,7 +122,8 @@ class BaseApp(object):
     def _retrieve_oauth2_access_token_params(self, request, params):
         request_state = params.pop('state', None)
         state = self.framework.get_session_data(request, 'state')
-        pprint(request_state)
+        pprint(request)
+        pprint(params)
         pprint(state)
         if state != request_state:
             raise MismatchingStateError()

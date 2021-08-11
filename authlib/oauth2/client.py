@@ -1,5 +1,5 @@
 from authlib.common.security import generate_token
-from authlib.common.urls import url_decode
+from authlib.common.urls import url_decode, quote_url
 from .rfc6749.parameters import (
     prepare_grant_uri,
     prepare_token_request,
@@ -10,6 +10,7 @@ from .rfc7009 import prepare_revoke_token_request
 from .rfc7636 import create_s256_code_challenge
 from .auth import TokenAuth, ClientAuth
 from pprint import pprint
+log = logging.getLogger(__name__)
 
 DEFAULT_HEADERS = {
     'Accept': 'application/json',
@@ -400,8 +401,10 @@ class OAuth2Client(object):
             grant_type = _guess_grant_type(kwargs)
 
         if grant_type == 'authorization_code':
+            log.debug(grant_type)
             if 'redirect_uri' not in kwargs:
                 kwargs['redirect_uri'] = self.redirect_uri
+            pprint(kwargs)
             return prepare_token_request(grant_type, body, **kwargs)
 
         if 'scope' not in kwargs and self.scope:

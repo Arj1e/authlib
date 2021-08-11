@@ -8,7 +8,7 @@ from .errors import (
     MissingRequestTokenError,
     MissingTokenError,
 )
-
+from pprint import pprint
 log = logging.getLogger(__name__)
 
 
@@ -329,6 +329,8 @@ class OAuth2Mixin(_RequestMixin, OAuth2Base):
         :param kwargs: Extra parameters to fetch access token.
         :return: A token dict.
         """
+        pprint(params)
+        pprint(kwargs)
         metadata = self.load_server_metadata()
         token_endpoint = self.access_token_url or metadata.get('token_endpoint')
         with self._get_oauth_client(**metadata) as client:

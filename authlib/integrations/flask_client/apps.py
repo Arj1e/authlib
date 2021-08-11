@@ -101,10 +101,10 @@ class FlaskOAuth2App(FlaskAppMixin, OAuth2Mixin, OpenIDMixin, BaseApp):
 
         state_data = self.framework.get_state_data(session, params.get('state'))
         log.debug('TEST')
-        pprint(state_data)
+        # pprint(state_data)
         params = self._format_state_params(state_data, params)
         log.debug('TEST2')
-        pprint(params)
+        # pprint(params)
         token = self.fetch_access_token(**params, **kwargs)
         log.debug('TEST3')
         self.token = token

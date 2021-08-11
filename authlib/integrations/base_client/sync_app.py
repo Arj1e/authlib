@@ -239,7 +239,10 @@ class OAuth2Base(object):
 
         redirect_uri = state_data.get('redirect_uri')
         if redirect_uri:
+            log.debug('Redirect_uri found')
             params['redirect_uri'] = redirect_uri
+            pprint(redirect_uri)
+            log.debug(redirect_uri)
         return params
 
     @staticmethod

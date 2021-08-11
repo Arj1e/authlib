@@ -2,6 +2,8 @@ from flask import current_app, session
 from flask.signals import Namespace
 from ..base_client import FrameworkIntegration, OAuthError
 from ..requests_client import OAuth1Session, OAuth2Session
+import logging
+log = logging.getLogger(__name__)
 
 _signal = Namespace()
 #: signal when token is updated
@@ -18,6 +20,7 @@ class FlaskIntegration(FrameworkIntegration):
 
     def get_session_data(self, request, key):
         sess_key = '_{}_authlib_{}_'.format(self.name, key)
+        log.debug(sess_key)
         return session.pop(sess_key, None)
 
     def update_token(self, token, refresh_token=None, access_token=None):

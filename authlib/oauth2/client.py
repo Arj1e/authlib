@@ -347,7 +347,7 @@ class OAuth2Client(object):
         # pprint(headers)
         # pprint(auth)
         pprint(kwargs)
-        body = body +'&redirect_uri=http%3A%2F%2F35.171.194.94%3A8088%2Foauth-authorized%2Fopenlmis'
+        # body = body +'&redirect_uri=http%3A%2F%2F35.171.194.94%3A8088%2Foauth-authorized%2Fopenlmis'
         resp = self.session.request(
             method, url, data=body, headers=headers, auth=auth, **kwargs)
 

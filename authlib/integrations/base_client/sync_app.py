@@ -229,18 +229,18 @@ class OAuth2Base(object):
         return session
 
     @staticmethod
-    def _format_state_params(state_data, params):
+    def _format_state_params(state_data, **kwargs):
         if state_data is None:
             raise MismatchingStateError()
 
         code_verifier = state_data.get('code_verifier')
         if code_verifier:
-            params['code_verifier'] = code_verifier
+            kwargs['code_verifier'] = code_verifier
 
         redirect_uri = state_data.get('redirect_uri')
         if redirect_uri:
-            params['redirect_uri'] = redirect_uri
-        return params
+            kwargs['redirect_uri'] = redirect_uri
+        return kwargs
 
     @staticmethod
     def _create_oauth2_authorization_url(client, authorization_endpoint, **kwargs):

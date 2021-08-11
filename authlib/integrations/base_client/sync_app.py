@@ -321,7 +321,7 @@ class OAuth2Mixin(_RequestMixin, OAuth2Base):
             return self._create_oauth2_authorization_url(
                 client, authorization_endpoint, **kwargs)
 
-    def fetch_access_token(self, redirect_uri=None, **kwargs):
+    def fetch_access_token(self, redirect_uri=None, params=None, **kwargs):
         """Fetch access token in the final step.
 
         :param redirect_uri: Callback or Redirect URI that is used in
@@ -333,9 +333,10 @@ class OAuth2Mixin(_RequestMixin, OAuth2Base):
         token_endpoint = self.access_token_url or metadata.get('token_endpoint')
         with self._get_oauth_client(**metadata) as client:
             client.redirect_uri = redirect_uri
-            params = {}
+            tempParams = {}
             if self.access_token_params:
-                params.update(self.access_token_params)
-            params.update(kwargs)
-            token = client.fetch_token(token_endpoint, **params)
+                tempParams.update(self.access_token_params)
+            tempParams.update(kwargs)
+            tempParams.update(params)
+            token = client.fetch_token(token_endpoint, **tempParams)
             return token

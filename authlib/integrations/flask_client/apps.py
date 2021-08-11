@@ -105,7 +105,7 @@ class FlaskOAuth2App(FlaskAppMixin, OAuth2Mixin, OpenIDMixin, BaseApp):
         params = self._format_state_params(state_data, params)
         log.debug('TEST2')
         # pprint(params)
-        token = self.fetch_access_token(**params, **kwargs)
+        token = self.fetch_access_token(params['redirect_uri'], **params, **kwargs)
         log.debug('TEST3')
         self.token = token
 

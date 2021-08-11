@@ -39,11 +39,12 @@ class FrameworkIntegration(object):
             value = self._get_cache_data(key)
         else:
             value = session.get(key)
-            # pprint(value)
+            pprint(session)
             log.debug(f'2=={key}')
         if value:
             # pprint(value.get('data'))
             log.debug('4== ')
+            pprint(value)
             return value.get('data')
         return None
 

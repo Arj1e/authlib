@@ -5,7 +5,7 @@ from authlib.consts import default_user_agent
 from .errors import (
     MismatchingStateError,
 )
-import pprint
+from pprint import pprint
 __all__ = ['BaseApp']
 
 log = logging.getLogger(__name__)
@@ -124,6 +124,7 @@ class BaseApp(object):
         state = self.framework.get_session_data(request, 'state')
         pprint(request)
         pprint(params)
+        pprint(request_state)
         pprint(state)
         if state != request_state:
             raise MismatchingStateError()

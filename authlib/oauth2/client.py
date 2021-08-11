@@ -343,7 +343,7 @@ class OAuth2Client(object):
                 url = '?'.join([url, body])
             body = ''
         # pprint(url)
-        # pprint(body)
+        pprint(body)
         # pprint(headers)
         # pprint(auth)
         pprint(kwargs)

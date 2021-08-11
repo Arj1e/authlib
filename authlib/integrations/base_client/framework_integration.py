@@ -3,6 +3,8 @@ import time
 
 import logging
 log = logging.getLogger(__name__)
+from pprint import pprint
+
 class FrameworkIntegration(object):
     expires_in = 3600
 
@@ -36,11 +38,13 @@ class FrameworkIntegration(object):
         if self.cache:
             value = self._get_cache_data(key)
         else:
-            log.debug(f'2=={key}')
             value = session.get(key)
+            pprint(value)
+            log.debug(f'2=={key}')
         if value:
+            pprint(value.get('data'))
+            log.debug('4== ')
             return value.get('data')
-        log.debug('4== ')
         return None
 
     def set_state_data(self, session, state, data):

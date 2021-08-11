@@ -321,7 +321,7 @@ class OAuth2Mixin(_RequestMixin, OAuth2Base):
             return self._create_oauth2_authorization_url(
                 client, authorization_endpoint, **kwargs)
 
-    def fetch_access_token(self, redirect_uri=None, **params, **kwargs):
+    def fetch_access_token(self, redirect_uri=None, **params=None, **kwargs):
         """Fetch access token in the final step.
 
         :param redirect_uri: Callback or Redirect URI that is used in

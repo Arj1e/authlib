@@ -5,7 +5,7 @@ from ..base_client import (
     BaseApp, OAuthError,
     OAuth1Mixin, OAuth2Mixin, OpenIDMixin,
 )
-
+from pprint import pprint
 import logging
 log = logging.getLogger(__name__)
 class FlaskAppMixin(object):
@@ -100,7 +100,9 @@ class FlaskOAuth2App(FlaskAppMixin, OAuth2Mixin, OpenIDMixin, BaseApp):
             }
 
         state_data = self.framework.get_state_data(session, params.get('state'))
+        pprint(state_data)
         params = self._format_state_params(state_data, params)
+        pprint(params)
         token = self.fetch_access_token(**params, **kwargs)
         self.token = token
 
